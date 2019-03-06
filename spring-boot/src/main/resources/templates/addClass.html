@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <title>Add Classes</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<ul>
+    <li><a th:href="@{/}">Home</a></li>
+    <li><a th:href="@{/allStudents/}">Students</a></li>
+    <li class="active"><a th:href="@{/allClasses/}">Classes</a></li>
+    <li><a th:href="@{/allSchools/}">Schools</a></li>
+</ul>
+<div class="main">
+    <form action="#" th:action="@{/addClass}" th:object="${form}" method="post">
+        <table>
+            <tr>
+                <td>Number:</td>
+                <td><select th:field="*{number}">
+                    <option th:value = "1" th:text="1"></option>
+                    <option th:value = "2" th:text="2"></option>
+                    <option th:value = "3" th:text="3"></option>
+                    <option th:value = "4" th:text="4"></option>
+                    <option th:value = "5" th:text="5"></option>
+                    <option th:value = "6" th:text="6"></option>
+                    <option th:value = "7" th:text="7"></option>
+                    <option th:value = "8" th:text="8"></option>
+                    <option th:value = "9" th:text="9"></option>
+                </select></td>
+            </tr>
+            <tr>
+                <td>Litera:</td>
+                <td><select th:field="*{litera}">
+                    <option th:value = 'A' th:text="A"></option>
+                    <option th:value = 'B' th:text="B"></option>
+                    <option th:value = 'C' th:text="C"></option>
+                    <option th:value = 'D' th:text="D"></option>
+                    <option th:value = 'E' th:text="E"></option>
+                </select></td>
+            </tr>
+            <tr>
+                <td>School:</td>
+                <td>
+                    <select th:field="*{school_id}">
+                        <option th:each="school: ${schools}" th:value="${school.id}" th:text="${school.description}">
+                        </option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><button type="submit" value="Submit">Submit</button></td>
+                <td><button type="reset" value="Reset">Reset</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

@@ -10,7 +10,11 @@ public class Student {
 
     private String name;
 
-    private String email;
+    private Integer age;
+
+    @ManyToOne
+    @JoinColumn(name = "class_id")
+    private Class aClass;
 
     public Integer getId() {
         return id;
@@ -28,11 +32,19 @@ public class Student {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
+    public Integer getAge() {
+        return age;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public Class getaClass() {
+        return aClass;
+    }
+
+    public void setaClass(Class aClass) {
+        this.aClass = aClass;
     }
 }

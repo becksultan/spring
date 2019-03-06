@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <title>Add School</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<ul>
+    <li><a th:href="@{/}">Home</a></li>
+    <li><a th:href="@{/allStudents/}">Students</a></li>
+    <li><a th:href="@{/allClasses/}">Classes</a></li>
+    <li class="active"><a th:href="@{/allSchools/}">Schools</a></li>
+</ul>
+<div class="main">
+    <form action="#" th:action="@{/addSchool}" th:object="${form}" method="post">
+        <table>
+            <tr>
+                <td>Description:</td>
+                <td><input type="text" th:field="*{description}"></td>
+                <td th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Description Error</td>
+            </tr>
+            <tr>
+                <td><button type="submit" value="Submit">Submit</button></td>
+                <td><button type="reset" value="Reset">Reset</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

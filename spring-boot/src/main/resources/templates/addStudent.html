@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Student</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<ul>
+    <li><a th:href="@{/}">Home</a></li>
+    <li class="active"><a th:href="@{/allStudents/}">Students</a></li>
+    <li><a th:href="@{/allClasses/}">Classes</a></li>
+    <li><a th:href="@{/allSchools/}">Schools</a></li>
+</ul>
+<div class="main">
+<form action="#" th:action="@{/addStudent}" th:object="${form}" method="post">
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" th:field="*{name}"></td>
+            <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+        </tr>
+        <tr>
+            <td>Age:</td>
+            <td><input type="text" th:field="*{age}"></td>
+            <td th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age Error</td>
+        </tr>
+        <tr>
+            <td>Class:</td>
+            <td>
+                <select th:field="*{class_id}">
+                    <option th:each="class: ${classes}" th:value="${class.id}" th:text="${class.name}">
+                    </option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><button type="submit" value="Submit">Submit</button></td>
+            <td><button type="reset" value="Reset">Reset</button></td>
+        </tr>
+    </table>
+</form>
+</div>
+</body>
+</html>
