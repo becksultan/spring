@@ -3,9 +3,11 @@ package main;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping(path="/")
@@ -23,12 +25,16 @@ public class MainController {
     }
 
     @PostMapping(path="/add")
-    public RedirectView addStudent(@ModelAttribute AddStudent addStudent) {
+    public String addStudent(@ModelAttribute @Valid AddStudent addStudent, BindingResult bindingResult, Model model) {
+        if(bindingResult.hasErrors()) {
+            model.addAttribute("form", addStudent);
+            return "add";
+        }
         Student student = new Student();
         student.setName(addStudent.getName());
         student.setEmail(addStudent.getEmail());
         studentRepository.save(student);
-        return new RedirectView("/");
+        return "redirect:/";
     }
 
     @GetMapping(path="/delete")
