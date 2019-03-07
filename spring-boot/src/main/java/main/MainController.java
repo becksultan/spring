@@ -45,7 +45,7 @@ public class MainController {
         student.setAge(addStudent.getAge());
         student.setaClass(classRepository.findById(addStudent.getClass_id()).get());
         studentRepository.save(student);
-        return "redirect:/";
+        return "redirect:/allStudents";
     }
 
     @GetMapping(path="/addClass")
@@ -66,7 +66,7 @@ public class MainController {
         Optional<School> school = schoolRepository.findById(addClass.getSchool_id());
         aClass.setSchool(school.get());
         classRepository.save(aClass);
-        return "redirect:/";
+        return "redirect:/allClasses";
     }
 
     @GetMapping(path="/addSchool")
@@ -82,9 +82,10 @@ public class MainController {
             return "addSchool";
         }
         School school = new School();
+        school.setName(addSchool.getName());
         school.setDescription(addSchool.getDescription());
         schoolRepository.save(school);
-        return "redirect:/";
+        return "redirect:/allSchools";
     }
 
     @GetMapping(path="/deleteStudent")

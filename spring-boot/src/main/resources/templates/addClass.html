@@ -43,7 +43,7 @@
                 <td>School:</td>
                 <td>
                     <select th:field="*{school_id}">
-                        <option th:each="school: ${schools}" th:value="${school.id}" th:text="${school.description}">
+                        <option th:each="school: ${schools}" th:value="${school.id}" th:text="${school.name}">
                         </option>
                     </select>
                 </td>

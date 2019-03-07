@@ -16,6 +16,10 @@
     <form action="#" th:action="@{/addSchool}" th:object="${form}" method="post">
         <table>
             <tr>
+                <td>Name:</td>
+                <td><input type="text" th:field="*{name}"></td>
+            </tr>
+            <tr>
                 <td>Description:</td>
                 <td><input type="text" th:field="*{description}"></td>
                 <td th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Description Error</td>

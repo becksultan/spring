@@ -7,7 +7,16 @@ public class AddSchool {
     private Long id;
 
     @NotNull
-    @Size(min = 2, max = 30)
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     private String description;
 
     public Long getId() {

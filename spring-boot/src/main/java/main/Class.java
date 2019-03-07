@@ -1,5 +1,8 @@
 package main;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
@@ -14,9 +17,10 @@ public class Class {
 
     @ManyToOne
     @JoinColumn(name = "school_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private School school;
 
-    @OneToMany(mappedBy = "id")
+    @OneToMany(mappedBy = "id", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Student> students;
 
     public Integer getId() {

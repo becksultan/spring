@@ -13,7 +13,20 @@
     <li><a th:href="@{/allSchools/}">Schools</a></li>
 </ul>
 <div class="main">
-<a th:href="@{/addStudent/}">Create</a>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Class</th>
+        </tr>
+        <tr th:each="student: ${students}">
+            <td th:text="${student.name}"></td>
+            <td th:text="${student.age}"></td>
+            <td th:text="${student.aClass.name}"></td>
+            <td><a th:href="@{/deleteStudent(id=${student.id})}">Delete</a></td>
+        </tr>
+    </table>
+    <a th:href="@{/addStudent/}">Create</a>
 </div>
 </body>
 </html>

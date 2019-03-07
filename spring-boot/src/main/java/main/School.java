@@ -1,5 +1,7 @@
 package main;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -10,9 +12,19 @@ public class School {
     private Integer id;
 
     @Column(nullable = false)
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     private String description;
 
-    @OneToMany(mappedBy = "school")
+    @OneToMany(mappedBy = "school", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Class> classes;
 
     public void setId(Integer id) {

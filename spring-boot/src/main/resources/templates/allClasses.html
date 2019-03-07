@@ -13,6 +13,17 @@
     <li><a th:href="@{/allSchools/}">Schools</a></li>
 </ul>
 <div class="main">
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>School</th>
+        </tr>
+        <tr th:each="class: ${classes}">
+            <td th:text="${class.name}"></td>
+            <td th:text="${class.school.name}"></td>
+            <td><a th:href="@{/deleteClass(id=${class.id})}">Delete</a></td>
+        </tr>
+    </table>
 <a th:href="@{/addClass/}">Create</a>
 </div>
 </body>
